@@ -1,0 +1,14 @@
+Tilpassede verdier:
+S0=		3.411847e+02 mm
+A=		4.229836e+01 mm
+Alpha=	9.031525e-04 1/s
+w=		1.027392e-02 (rad)/s
+T0=		6.092171e+02 s
+phi=	-1.236647e+00 (rad)
+
+Usikkerheter:
+dS0=	3.995166e-01 mm
+dA=		1.553343e+00 mm
+dAlpha=	5.694512e-051/s
+dw=		5.875100e-05 (rad)/s
+dphi=	3.678888e-02 (rad)

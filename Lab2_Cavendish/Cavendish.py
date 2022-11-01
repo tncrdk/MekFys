@@ -2,12 +2,12 @@ import matplotlib.pyplot as plt # alle plottefunksjoner
 import numpy as np # inneholder en type array som er enkle og raske å jobbe med
 from scipy.optimize import curve_fit # Funksjon for kurvetilpasning
 
-filnavn = "data1.txt" # [minutter, sekunder, S (mm)]
+filnavn = "data2.txt" # [minutter, sekunder, S (mm)]
 
 ###################################################################
 ## Hvis tilpasningen feiler kan dere endre de initielle verdiene ##
 ###################################################################
-S0_0 = 380    # Likevektslinje
+S0_0 = 376    # Likevektslinje
 A0 = 20       # Amplitude, svingeutslag
 alpha0 = 0    # Eksponensiell dempingskoeffisient for amplituden
 T0 = 650      # Periode
@@ -54,6 +54,14 @@ print('Tilpassede verdier:\nS0=\t\t%e mm\nA=\t\t%e mm\nAlpha=\t%e 1/s\nw=\t\t%e 
     (S0, A, alpha, w, T, phi))
 print('Usikkerheter:\ndS0=\t%e mm\ndA=\t\t%e mm\ndAlpha=\t%e1/s\ndw=\t\t%e (rad)/s\ndphi=\t%e (rad)' %
     (dS0, dA, dalpha, dw, dphi))
+with open("results2.txt", "w") as f:
+    f.write(
+        'Tilpassede verdier:\nS0=\t\t%e mm\nA=\t\t%e mm\nAlpha=\t%e 1/s\nw=\t\t%e (rad)/s\nT0=\t\t%e s\nphi=\t%e (rad)' % 
+        (S0, A, alpha, w, T, phi))
+    f.write("\n\n")
+    f.write(
+        'Usikkerheter:\ndS0=\t%e mm\ndA=\t\t%e mm\ndAlpha=\t%e1/s\ndw=\t\t%e (rad)/s\ndphi=\t%e (rad)' %
+        (dS0, dA, dalpha, dw, dphi))
 
 ###################################
 ## Her kan dere endre på figuren ##
@@ -69,5 +77,5 @@ plt.plot(t_plot, S0 - A*np.exp(-alpha*t_plot), '--k')   # Nedre omhyldningskurve
 plt.xlabel('Tid (s)')
 plt.ylabel('Svingeutslag (mm)')
 plt.legend()
-plt.show()
+plt.savefig("S2.png")
 ###################################
